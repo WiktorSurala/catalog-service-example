@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: Catalog
+  datasource:
+    url: "jdbc:postgresql://localhost:5432/postgres"
+    username: "myuser"
+    password: "mypassword"
+  jpa:
+    hibernate:
+      ddl-auto: update
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.xml
+    enabled: true

@@ -1,0 +1,102 @@
+= Catalog Service Documentation
+Author: Wiktor Surala
+Version: 1.0
+Date: {docdate}
+
+== Overview
+
+The **Catalog Service** is a project designed to demonstrate programming skills and architectural design principles. It serves as a key component in a larger **microservice architecture**, working alongside an **Order Service** to provide structured and efficient data retrieval.
+
+== Purpose
+
+The main purpose of this service is to facilitate communication between the backend and the database, allowing other microservices (such as the Order Service) to fetch relevant product-related data. The service is responsible for managing product information, ensuring seamless integration within the overall system.
+
+== Features
+
+- Provides an API for retrieving product details based on **product IDs** or pagination.
+- Connects to a **database** to fetch and store relevant catalog data.
+- Serves as part of a **microservice ecosystem**, ensuring modular and scalable architecture.
+- Works in conjunction with the **Order Service**, which depends on catalog data to process orders.
+- Implements **best practices** for RESTful APIs and database interactions and liquibase features.
+
+== Architecture
+
+The **Catalog Service** is designed as a **backend microservice** that interacts with a database. Other services can access it via API calls to retrieve **product details**, pricing information, and availability.
+
+=== **Core Components**
+. **REST API**: Exposes endpoints to fetch product data.
+. **Database Connection**: Stores and retrieves product information.
+. **Database Pagination**: Instead of retrieving large datasets from database at once, use Pagination with page number and page size.
+. **Microservice Communication**: Interacts with the Order Service for data sharing.
+. **Error Handling & Logging**: Ensures reliable data transactions and service stability.
+
+== Usage
+
+To interact with the **Catalog Service**, other microservices (like the Order Service) can send **API requests** to fetch product data:
+
+.Example Request:
+[source]
+----
+GET /api/catalog/products?productIds=A00001,A00002,A00003
+----
+
+.Example Response:
+[source,json]
+----
+{
+    "products": [
+        {
+            "id": "A00001",
+            "name": "Eco-Friendly Bottle",
+            "price": 19.99,
+            "stock": 100
+        },
+        {
+            "id": "A00002",
+            "name": "Organic Cotton T-Shirt",
+            "price": 29.99,
+            "stock": 100
+        },
+        {
+            "id": "A00003",
+            "name": "Solar Power Bank",
+            "price": 49.99,
+            "stock": 100
+        }
+    ]
+}
+----
+
+.Example Request:
+
+[source]
+----
+GET /api/products?page=0&size=2
+----
+.Example Response:
+[source,json]
+----
+{
+    "totalItems": 5,
+    "products": [
+        {
+            "id": "A00001",
+            "name": "Eco-Friendly Bottle",
+            "price": 19.99,
+            "stock": 100
+        },
+        {
+            "id": "A00002",
+            "name": "Organic Cotton T-Shirt",
+            "price": 29.99,
+            "stock": 100
+        }
+    ],
+    "totalPages": 3,
+    "currentPage": 0
+}
+----
+
+== Conclusion
+
+The Catalog Service is an essential component of the overall microservice architecture, providing structured access to product data. It showcases scalable software design, database interactions, and REST API best practices, making it a valuable demonstration of programming skills.

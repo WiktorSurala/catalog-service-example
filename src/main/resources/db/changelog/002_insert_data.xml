@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.8.xsd">
+
+    <changeSet id="2" author="Wiktor Surala">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">SELECT COUNT(*)
+                                         FROM item</sqlCheck>
+        </preConditions>
+
+        <insert tableName="item">
+            <column name="id" value="A00001"/>
+            <column name="name" value="Eco-Friendly Bottle"/>
+            <column name="description" value="Reusable stainless steel bottle"/>
+            <column name="price" value="19.99"/>
+            <column name="category" value="Accessories"/>
+            <column name="created_at" valueDate="NOW()"/>
+            <column name="updated_at" valueDate="NOW()"/>
+        </insert>
+
+        <insert tableName="item">
+            <column name="id" value="A00002"/>
+            <column name="name" value="Organic Cotton T-Shirt"/>
+            <column name="description" value="100% organic cotton t-shirt"/>
+            <column name="price" value="29.99"/>
+            <column name="category" value="Clothing"/>
+            <column name="created_at" valueDate="NOW()"/>
+            <column name="updated_at" valueDate="NOW()"/>
+        </insert>
+
+        <insert tableName="item">
+            <column name="id" value="A00003"/>
+            <column name="name" value="Solar Power Bank"/>
+            <column name="description" value="Portable power bank with solar charging"/>
+            <column name="price" value="49.99"/>
+            <column name="category" value="Electronics"/>
+            <column name="created_at" valueDate="NOW()"/>
+            <column name="updated_at" valueDate="NOW()"/>
+        </insert>
+
+        <insert tableName="item">
+            <column name="id" value="A00004"/>
+            <column name="name" value="Bamboo Toothbrush"/>
+            <column name="description" value="Biodegradable bamboo toothbrush"/>
+            <column name="price" value="5.99"/>
+            <column name="category" value="Personal Care"/>
+            <column name="created_at" valueDate="NOW()"/>
+            <column name="updated_at" valueDate="NOW()"/>
+        </insert>
+
+        <insert tableName="item">
+            <column name="id" value="A00005"/>
+            <column name="name" value="Recycled Notebook"/>
+            <column name="description" value="Notebook made from recycled paper"/>
+            <column name="price" value="9.99"/>
+            <column name="category" value="Office Supplies"/>
+            <column name="created_at" valueDate="NOW()"/>
+            <column name="updated_at" valueDate="NOW()"/>
+        </insert>
+
+    </changeSet>
+
+</databaseChangeLog>
